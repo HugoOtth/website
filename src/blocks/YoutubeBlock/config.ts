@@ -2,10 +2,7 @@ import type { Block } from 'payload'
 
 export const YouTubeBlock: Block = {
   slug: 'youtubeBlock',
-  labels: {
-    singular: 'YouTube Video',
-    plural: 'YouTube Videos',
-  },
+  interfaceName: 'YoutubeBlock',
   fields: [
     {
       name: 'youtubeID',
