@@ -1,6 +1,7 @@
 import type { Block, Field } from 'payload'
 
 import {
+  BlocksFeature,
   FixedToolbarFeature,
   HeadingFeature,
   InlineToolbarFeature,
@@ -8,6 +9,10 @@ import {
 } from '@payloadcms/richtext-lexical'
 
 import { link } from '@/fields/link'
+import { Banner } from '@payloadcms/ui'
+import { Code } from 'lucide-react'
+import { MediaBlock } from '../MediaBlock/config'
+import { YouTubeBlock } from '../YoutubeBlock/config'
 
 const columnFields: Field[] = [
   {
@@ -41,6 +46,7 @@ const columnFields: Field[] = [
         return [
           ...rootFeatures,
           HeadingFeature({ enabledHeadingSizes: ['h2', 'h3', 'h4'] }),
+          BlocksFeature({ blocks: [MediaBlock] }), //Added Media blocks for column field, here is the line to add blocks :DD
           FixedToolbarFeature(),
           InlineToolbarFeature(),
         ]
