@@ -23,8 +23,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html className={cn(GeistSans.variable, GeistMono.variable)} lang="en" suppressHydrationWarning>
       <head>
         <InitTheme />
-        <link href="/logo-site.png" rel="icon" sizes="32x32" />
-        <link href="/logo-site.png" rel="icon" type="image/svg+xml" />
       </head>
       <body>
         <Providers>
@@ -45,6 +43,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
 export const metadata: Metadata = {
   metadataBase: new URL(getServerSideURL()),
+  icons: {
+    icon: [{ url: '/favicon.ico' }, { url: '/logo-site.png', sizes: '32x32', type: 'image/png' }],
+    shortcut: ['/favicon.ico'],
+    apple: [{ url: '/logo-site.png' }],
+  },
   openGraph: mergeOpenGraph(),
   twitter: {
     card: 'summary_large_image',

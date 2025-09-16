@@ -7,4 +7,4 @@ pnpm run -s format
 git add -A
 
 # Optionally, add lint --fix if you want:
-# pnpm lint:fix
+pnpm lint:fix
