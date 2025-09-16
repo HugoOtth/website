@@ -1,5 +1,4 @@
 #!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
 
 # Run Prettier on the whole repo to keep formatting consistent
 pnpm run -s format
