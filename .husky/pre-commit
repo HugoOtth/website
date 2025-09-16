@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Run Prettier on the whole repo to keep formatting consistent
+pnpm run -s format
+
+# Re-stage any files that Prettier modified so they land in this commit
+git add -A
+
+# Optionally, add lint --fix if you want:
+# pnpm lint:fix

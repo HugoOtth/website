@@ -12,3 +12,13 @@
 **/docs/**
 tsconfig.json
 
+
+# Added by Husky setup
+.next/
+node_modules/
+coverage/
+*.log
+pnpm-lock.yaml
+public/sitemap.xml
+public/robots.txt
+
