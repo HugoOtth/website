@@ -11,7 +11,7 @@ if ! git diff --cached --quiet; then
     echo "💡 Run 'npm run format' manually if you want to format your code."
 else
     # Run Prettier to format all files
-    npm run format
+    pnpm run format
     
     # Check if formatting made any changes
     if ! git diff --quiet; then
@@ -25,7 +25,7 @@ fi
 echo "🔧 Running build before push..."
 
 # Run the build command
-npm run build
+pnpm run build
 
 # Check if build was successful
 if [ $? -eq 0 ]; then

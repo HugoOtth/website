@@ -13,12 +13,14 @@ import type { Theme } from './types'
 
 import { useTheme } from '..'
 import { themeLocalStorageKey } from './types'
+import { trackThemeChange } from '@/utilities/analytics'
 
 export const ThemeSelector: React.FC = () => {
   const { setTheme } = useTheme()
   const [value, setValue] = useState('')
 
   const onThemeChange = (themeToSet: Theme & 'auto') => {
+    const resolvedTheme = themeToSet === 'auto' ? 'auto' : themeToSet
     if (themeToSet === 'auto') {
       setTheme(null)
       setValue('auto')
@@ -26,10 +28,12 @@ export const ThemeSelector: React.FC = () => {
       setTheme(themeToSet)
       setValue(themeToSet)
     }
+    trackThemeChange({ theme: resolvedTheme })
   }
 
   React.useEffect(() => {
     const preference = window.localStorage.getItem(themeLocalStorageKey)
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setValue(preference ?? 'auto')
   }, [])
 

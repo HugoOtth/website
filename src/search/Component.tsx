@@ -4,6 +4,7 @@ import { Label } from '@/components/ui/label'
 import React, { useState, useEffect } from 'react'
 import { useDebounce } from '@/utilities/useDebounce'
 import { useRouter } from 'next/navigation'
+import { trackSearch } from '@/utilities/analytics'
 
 export const Search: React.FC = () => {
   const [value, setValue] = useState('')
@@ -13,6 +14,9 @@ export const Search: React.FC = () => {
 
   useEffect(() => {
     router.push(`/search${debouncedValue ? `?q=${debouncedValue}` : ''}`)
+    if (debouncedValue) {
+      trackSearch({ query: debouncedValue })
+    }
   }, [debouncedValue, router])
 
   return (

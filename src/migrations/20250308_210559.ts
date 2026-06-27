@@ -1,6 +1,6 @@
 import { MigrateUpArgs, MigrateDownArgs, sql } from '@payloadcms/db-vercel-postgres'
 
-export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
+export async function up({ db, payload: _payload, req: _req }: MigrateUpArgs): Promise<void> {
   await db.execute(sql`
    CREATE TYPE "public"."enum_pages_blocks_youtube_block_aspect_ratio" AS ENUM('16:9', '4:3', '1:1');
   CREATE TYPE "public"."enum__pages_v_blocks_youtube_block_aspect_ratio" AS ENUM('16:9', '4:3', '1:1');
@@ -47,7 +47,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX IF NOT EXISTS "_pages_v_blocks_youtube_block_path_idx" ON "_pages_v_blocks_youtube_block" USING btree ("_path");`)
 }
 
-export async function down({ db, payload, req }: MigrateDownArgs): Promise<void> {
+export async function down({ db, payload: _payload, req: _req }: MigrateDownArgs): Promise<void> {
   await db.execute(sql`
    DROP TABLE "pages_blocks_youtube_block" CASCADE;
   DROP TABLE "_pages_v_blocks_youtube_block" CASCADE;

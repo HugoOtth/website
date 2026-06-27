@@ -11,6 +11,7 @@ import {
 import { cn } from '@/utilities/ui'
 import { useRouter } from 'next/navigation'
 import React from 'react'
+import { trackPagination } from '@/utilities/analytics'
 
 export const Pagination: React.FC<{
   className?: string
@@ -34,6 +35,7 @@ export const Pagination: React.FC<{
             <PaginationPrevious
               disabled={!hasPrevPage}
               onClick={() => {
+                trackPagination({ page: page - 1 })
                 router.push(`/posts/page/${page - 1}`)
               }}
             />
@@ -49,6 +51,7 @@ export const Pagination: React.FC<{
             <PaginationItem>
               <PaginationLink
                 onClick={() => {
+                  trackPagination({ page: page - 1 })
                   router.push(`/posts/page/${page - 1}`)
                 }}
               >
@@ -61,6 +64,7 @@ export const Pagination: React.FC<{
             <PaginationLink
               isActive
               onClick={() => {
+                trackPagination({ page })
                 router.push(`/posts/page/${page}`)
               }}
             >
@@ -72,6 +76,7 @@ export const Pagination: React.FC<{
             <PaginationItem>
               <PaginationLink
                 onClick={() => {
+                  trackPagination({ page: page + 1 })
                   router.push(`/posts/page/${page + 1}`)
                 }}
               >
@@ -90,6 +95,7 @@ export const Pagination: React.FC<{
             <PaginationNext
               disabled={!hasNextPage}
               onClick={() => {
+                trackPagination({ page: page + 1 })
                 router.push(`/posts/page/${page + 1}`)
               }}
             />

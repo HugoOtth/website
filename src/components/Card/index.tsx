@@ -7,6 +7,7 @@ import React, { Fragment } from 'react'
 import type { Post } from '@/payload-types'
 
 import { Media } from '@/components/Media'
+import { trackEventCardClick } from '@/utilities/analytics'
 
 export type CardPostData = Pick<Post, 'slug' | 'categories' | 'meta' | 'title'>
 
@@ -35,7 +36,11 @@ export const Card: React.FC<{
         'border border-border rounded-lg overflow-hidden bg-card hover:cursor-pointer',
         className,
       )}
+      // eslint-disable-next-line react-hooks/refs
       ref={card.ref}
+      onClick={() => {
+        trackEventCardClick({ title: titleToUse ?? undefined, slug: slug ?? undefined })
+      }}
     >
       <div className="relative w-full aspect-square bg-muted">
         {!metaImage && (
@@ -77,6 +82,7 @@ export const Card: React.FC<{
         {titleToUse && (
           <div className="prose">
             <h3>
+              {/* eslint-disable-next-line react-hooks/refs */}
               <Link className="not-prose" href={href} ref={link.ref}>
                 {titleToUse}
               </Link>

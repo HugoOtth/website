@@ -9,10 +9,7 @@ import {
 } from '@payloadcms/richtext-lexical'
 
 import { link } from '@/fields/link'
-import { Banner } from '@payloadcms/ui'
-import { Code } from 'lucide-react'
 import { MediaBlock } from '../MediaBlock/config'
-import { YouTubeBlock } from '../YoutubeBlock/config'
 
 const columnFields: Field[] = [
   {
