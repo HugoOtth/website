@@ -1,14 +1,8 @@
-import * as migration_20250307_mark_applied from './20250307_mark_applied'
 import * as migration_20250308_183843 from './20250308_183843'
 import * as migration_20250308_210559 from './20250308_210559'
 import * as migration_20260627_022630 from './20260627_022630'
 
 export const migrations = [
-  {
-    up: migration_20250307_mark_applied.up,
-    down: migration_20250307_mark_applied.down,
-    name: '20250307_mark_applied',
-  },
   {
     up: migration_20250308_183843.up,
     down: migration_20250308_183843.down,

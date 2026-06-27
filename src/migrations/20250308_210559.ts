@@ -2,8 +2,8 @@ import { MigrateUpArgs, MigrateDownArgs, sql } from '@payloadcms/db-vercel-postg
 
 export async function up({ db, payload: _payload, req: _req }: MigrateUpArgs): Promise<void> {
   await db.execute(sql`
-   CREATE TYPE "public"."enum_pages_blocks_youtube_block_aspect_ratio" AS ENUM('16:9', '4:3', '1:1');
-  CREATE TYPE "public"."enum__pages_v_blocks_youtube_block_aspect_ratio" AS ENUM('16:9', '4:3', '1:1');
+   DO $$ BEGIN CREATE TYPE "public"."enum_pages_blocks_youtube_block_aspect_ratio" AS ENUM('16:9', '4:3', '1:1'); EXCEPTION WHEN duplicate_object THEN NULL; END $$;
+  DO $$ BEGIN CREATE TYPE "public"."enum__pages_v_blocks_youtube_block_aspect_ratio" AS ENUM('16:9', '4:3', '1:1'); EXCEPTION WHEN duplicate_object THEN NULL; END $$;
   CREATE TABLE IF NOT EXISTS "pages_blocks_youtube_block" (
   	"_order" integer NOT NULL,
   	"_parent_id" integer NOT NULL,
