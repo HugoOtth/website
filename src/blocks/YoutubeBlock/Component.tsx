@@ -53,7 +53,11 @@ export const YouTubeBlock: React.FC<YouTubeBlockProps & { className?: string }> 
       ;(window as unknown as Record<string, unknown>).onYouTubeIframeAPIReady = () => {
         if (typeof prevOnReady === 'function') prevOnReady()
         try {
-          const YT = (window as unknown as { YT?: { Player: new (el: HTMLIFrameElement, cfg: object) => object } }).YT
+          const YT = (
+            window as unknown as {
+              YT?: { Player: new (el: HTMLIFrameElement, cfg: object) => object }
+            }
+          ).YT
           if (YT?.Player) {
             new YT.Player(iframe, {
               events: {
@@ -85,7 +89,11 @@ export const YouTubeBlock: React.FC<YouTubeBlockProps & { className?: string }> 
 
     if ((window as unknown as { YT?: { Player?: unknown } }).YT?.Player) {
       try {
-        const YT = (window as unknown as { YT: { Player: new (el: HTMLIFrameElement, cfg: object) => object } }).YT
+        const YT = (
+          window as unknown as {
+            YT: { Player: new (el: HTMLIFrameElement, cfg: object) => object }
+          }
+        ).YT
         new YT.Player(iframe, {
           events: {
             onStateChange: (event: { data: number }) => {

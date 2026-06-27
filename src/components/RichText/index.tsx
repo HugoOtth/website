@@ -26,11 +26,7 @@ import { cn } from '@/utilities/ui'
 type NodeTypes =
   | DefaultNodeTypes
   | SerializedBlockNode<
-      | BannerBlockProps
-      | CTABlockProps
-      | CodeBlockProps
-      | MediaBlockProps
-      | YouTubeBlockProps
+      BannerBlockProps | CTABlockProps | CodeBlockProps | MediaBlockProps | YouTubeBlockProps
     >
 
 const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
