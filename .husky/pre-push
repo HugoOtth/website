@@ -11,6 +11,8 @@ pnpm run build
 # Check if build was successful
 if [ $? -eq 0 ]; then
     echo "✅ Build successful! Proceeding with push..."
+    # Revert auto-generated files that build may have reformatted
+    git checkout -- next-env.d.ts 2>/dev/null || true
     exit 0
 else
     echo "❌ Build failed! Push aborted."
