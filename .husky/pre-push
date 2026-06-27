@@ -1,26 +1,7 @@
 #!/usr/bin/env sh
 
-# Pre-push hook that formats code and runs the build command
+# Pre-push hook that runs the build command
 # This will prevent pushing if the build fails
-
-echo "🎨 Formatting code with Prettier..."
-
-# Check if there are any staged changes that need formatting
-if ! git diff --cached --quiet; then
-    echo "⚠️  You have staged changes. Skipping auto-formatting to avoid conflicts."
-    echo "💡 Run 'npm run format' manually if you want to format your code."
-else
-    # Run Prettier to format all files
-    pnpm run format
-    
-    # Check if formatting made any changes
-    if ! git diff --quiet; then
-        echo "✨ Code was formatted! Adding changes..."
-        git add .
-    else
-        echo "✅ Code is already properly formatted!"
-    fi
-fi
 
 echo "🔧 Running build before push..."
 

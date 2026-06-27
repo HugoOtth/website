@@ -7,7 +7,8 @@
   "scripts": {
     "prepare": "husky",
     "format": "prettier --write .",
-    "build": "cross-env NODE_OPTIONS=--no-deprecation next build",
+    "build": "cross-env NODE_OPTIONS=--no-deprecation pnpm run migrate:prod && next build",
+    "migrate:prod": "cross-env NODE_OPTIONS=--no-deprecation echo 'y' | payload migrate",
     "postbuild": "next-sitemap --config next-sitemap.config.cjs",
     "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",
     "dev:prod": "cross-env NODE_OPTIONS=--no-deprecation rm -rf .next && pnpm build && pnpm start",
